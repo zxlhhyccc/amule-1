@@ -158,7 +158,7 @@ update-alternatives --remove ed2k %{_bindir}/ed2k-%{name}
 %{_liconsdir}/%{name}.png
 %lang(de) %{_mandir}/de/man1/alc.1*
 %lang(es) %{_mandir}/es/man1/alc.1*
-%lang(eu) %{_mandir}/eu/man1/alc.1*
+#lang(eu) %{_mandir}/eu/man1/alc.1*
 %lang(fr) %{_mandir}/fr/man1/alc.1*
 %lang(hu) %{_mandir}/hu/man1/alc.1*
 %lang(it) %{_mandir}/it/man1/alc.1*
@@ -166,7 +166,7 @@ update-alternatives --remove ed2k %{_bindir}/ed2k-%{name}
 %{_mandir}/man1/alc.1*
 %lang(de) %{_mandir}/de/man1/amule.1*
 %lang(es) %{_mandir}/es/man1/amule.1*
-%lang(eu) %{_mandir}/eu/man1/amule.1*
+#lang(eu) %{_mandir}/eu/man1/amule.1*
 %lang(fr) %{_mandir}/fr/man1/amule.1*
 %lang(hu) %{_mandir}/hu/man1/amule.1*
 %lang(it) %{_mandir}/it/man1/amule.1*
@@ -179,20 +179,21 @@ update-alternatives --remove ed2k %{_bindir}/ed2k-%{name}
 %lang(ru) %{_mandir}/ru/man1/amulegui.1*
 %{_mandir}/de/man1/cas.1*
 %lang(es) %{_mandir}/es/man1/cas.1*
-%lang(eu) %{_mandir}/eu/man1/cas.1*
+%lang(fr) %{_mandir}/fr/man1/cas.1*
+#lang(eu) %{_mandir}/eu/man1/cas.1*
 %lang(hu) %{_mandir}/hu/man1/cas.1*
 %lang(it) %{_mandir}/it/man1/cas.1*
 %lang(ru) %{_mandir}/ru/man1/cas.1*
 %lang(de) %{_mandir}/de/man1/ed2k.1*
 %lang(es) %{_mandir}/es/man1/ed2k.1*
-%lang(eu) %{_mandir}/eu/man1/ed2k.1*
+#lang(eu) %{_mandir}/eu/man1/ed2k.1*
 %lang(fr) %{_mandir}/fr/man1/ed2k.1*
 %lang(hu) %{_mandir}/hu/man1/ed2k.1*
 %lang(it) %{_mandir}/it/man1/ed2k.1*
 %lang(ru) %{_mandir}/ru/man1/ed2k.1*
 %lang(de) %{_mandir}/de/man1/wxcas.1*
 %lang(es) %{_mandir}/es/man1/wxcas.1*
-%lang(eu) %{_mandir}/eu/man1/wxcas.1*
+#lang(eu) %{_mandir}/eu/man1/wxcas.1*
 %lang(fr) %{_mandir}/fr/man1/wxcas.1*
 %lang(hu) %{_mandir}/hu/man1/wxcas.1*
 %lang(it) %{_mandir}/it/man1/wxcas.1*
@@ -216,7 +217,7 @@ update-alternatives --remove ed2k %{_bindir}/ed2k-%{name}
 %{_bindir}/amuled
 %lang(de) %{_mandir}/de/man1/alcc.1*
 %lang(es) %{_mandir}/es/man1/alcc.1*
-%lang(eu) %{_mandir}/eu/man1/alcc.1*
+#lang(eu) %{_mandir}/eu/man1/alcc.1*
 %lang(fr) %{_mandir}/fr/man1/alcc.1*
 %lang(it) %{_mandir}/it/man1/alcc.1*
 %lang(ru) %{_mandir}/ru/man1/alcc.1*
@@ -224,7 +225,7 @@ update-alternatives --remove ed2k %{_bindir}/ed2k-%{name}
 %lang(hu) %{_mandir}/hu/man1/alcc.1*
 %lang(de) %{_mandir}/de/man1/amulecmd.1*
 %lang(es) %{_mandir}/es/man1/amulecmd.1*
-%lang(eu) %{_mandir}/eu/man1/amulecmd.1*
+#lang(eu) %{_mandir}/eu/man1/amulecmd.1*
 %lang(fr) %{_mandir}/fr/man1/amulecmd.1*
 %lang(hu) %{_mandir}/hu/man1/amulecmd.1*
 %lang(it) %{_mandir}/it/man1/amulecmd.1*
@@ -232,7 +233,7 @@ update-alternatives --remove ed2k %{_bindir}/ed2k-%{name}
 %{_mandir}/man1/amulecmd.1*
 %lang(de) %{_mandir}/de/man1/amuled.1*
 %lang(es) %{_mandir}/es/man1/amuled.1*
-%lang(eu) %{_mandir}/eu/man1/amuled.1*
+#lang(eu) %{_mandir}/eu/man1/amuled.1*
 %lang(fr) %{_mandir}/fr/man1/amuled.1*
 %lang(hu) %{_mandir}/hu/man1/amuled.1*
 %lang(it) %{_mandir}/it/man1/amuled.1*
@@ -246,7 +247,7 @@ update-alternatives --remove ed2k %{_bindir}/ed2k-%{name}
 %{_datadir}/amule/webserver/*
 %lang(de) %{_mandir}/de/man1/amuleweb.1*
 %lang(es) %{_mandir}/es/man1/amuleweb.1*
-%lang(eu) %{_mandir}/eu/man1/amuleweb.1*
+#lang(eu) %{_mandir}/eu/man1/amuleweb.1*
 %lang(fr) %{_mandir}/fr/man1/amuleweb.1*
 %lang(hu) %{_mandir}/hu/man1/amuleweb.1*
 %lang(it) %{_mandir}/it/man1/amuleweb.1*
