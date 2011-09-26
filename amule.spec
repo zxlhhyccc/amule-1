@@ -1,6 +1,7 @@
+%define subver rc2
 %define name amule
 %define version 2.3.1
-%define release %mkrel 0.rc1
+%define release %mkrel 0.%{subver}
 %define oname aMule
 
 Summary: File sharing client compatible with eDonkey
@@ -10,7 +11,7 @@ Release: %{release}
 License: GPLv2+
 Group: Networking/File transfer
 
-Source:	http://ovh.dl.sourceforge.net/sourceforge/amule/%{oname}-%{version}rc1.tar.bz2
+Source:	http://ovh.dl.sourceforge.net/sourceforge/amule/%{oname}-%{version}%{subver}.tar.bz2
 Source10: %{name}-16.png
 Source11: %{name}-32.png
 Source12: %{name}-48.png
@@ -67,7 +68,7 @@ following platforms: Linux, *BSD and MacOS X.
 This is the webserver to control aMule remotely (or locally:).
 
 %prep
-%setup -q -n %{oname}-%{version}rc1
+%setup -q -n %{oname}-%{version}%{subver}
 #apply_patches
 
 %build
