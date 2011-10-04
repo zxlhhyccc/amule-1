@@ -20,7 +20,7 @@ Source12: %{name}-48.png
 #Patch0: aMule-2.2.6-fix-build-without-wx-segv-handler.patch
 URL: http://amule.org
 BuildRoot: %{_tmppath}/%{name}-buildroot
-
+Patch0: aMule-2.3.1rc2-wxversion.patch
 BuildRequires: gd-devel >= 2.0
 BuildRequires: curl-devel
 Buildrequires: ncurses-devel
@@ -69,10 +69,11 @@ This is the webserver to control aMule remotely (or locally:).
 
 %prep
 %setup -q -n %{oname}-%{version}%{subver}
+%patch0 -p1
 #apply_patches
 
 %build
-
+./autogen.sh
 %configure2_5x \
 --with-wx-config=%{_bindir}/wx-config-unicode\
                --enable-amulecmd \
