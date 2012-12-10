@@ -2,29 +2,28 @@
 
 Name:		amule
 Version:	2.3.1
-Release:	%mkrel 1
+Release:	2
 Summary:	File sharing client compatible with eDonkey
 License:	GPLv2+
 Group:		Networking/File transfer
+URL:		http://amule.org
 Source:		http://ovh.dl.sourceforge.net/sourceforge/amule/%{oname}-%{version}.tar.bz2
 Source10:	%{name}-16.png
 Source11:	%{name}-32.png
 Source12:	%{name}-48.png
-URL:		http://amule.org
 Patch0:		aMule-2.3.1rc2-wxversion.patch
+Patch1:		amule-2.3.1-gcc47.patch
 BuildRequires:	gd-devel >= 2.0
-BuildRequires:	curl-devel
-Buildrequires:	ncurses-devel
-Buildrequires:	readline-devel
-BuildRequires:	gettext-devel
-Buildrequires:	desktop-file-utils
-BuildRequires:	wxgtku-devel >= 2.8
-BuildRequires:	libcryptopp-devel
-BuildRequires:	libupnp-devel
-BuildRequires:	libgeoip-devel
+BuildRequires:	pkgconfig(cryptopp)
+BuildRequires:	pkgconfig(libcurl)
+BuildRequires:	pkgconfig(libupnp)
+BuildRequires:	pkgconfig(ncurses)
 BuildRequires:	binutils-devel
-
-Conflicts:	xmule < 1.6.0-2plf
+BuildRequires:	gettext-devel
+BuildRequires:	libgeoip-devel
+BuildRequires:	readline-devel
+BuildRequires:	wxgtku-devel
+BuildRequires:	desktop-file-utils
 
 %description
 aMule is an easy to use multi-platform client for ED2K Peer-to-Peer
@@ -61,6 +60,7 @@ This is the webserver to control aMule remotely (or locally:).
 %prep
 %setup -q -n %{oname}-%{version}
 %patch0 -p1
+%patch1 -p1
 
 %build
 ./autogen.sh
@@ -81,19 +81,17 @@ This is the webserver to control aMule remotely (or locally:).
 %make
 
 %install
-%__rm -rf %{buildroot}
-
 %makeinstall_std
-%__install -m 644 -D %{SOURCE10} %{buildroot}%{_miconsdir}/%{name}.png
-%__install -m 644 -D %{SOURCE11} %{buildroot}%{_iconsdir}/%{name}.png
-%__install -m 644 -D %{SOURCE12} %{buildroot}%{_liconsdir}/%{name}.png
+install -m 644 -D %{SOURCE10} %{buildroot}%{_miconsdir}/%{name}.png
+install -m 644 -D %{SOURCE11} %{buildroot}%{_iconsdir}/%{name}.png
+install -m 644 -D %{SOURCE12} %{buildroot}%{_liconsdir}/%{name}.png
 
 # Fix wrong-script-end-of-line-encoding
 perl -pi -e 's/\015$//' %{buildroot}%{_datadir}/doc/amule-%{version}/amule-win32.HOWTO.txt
 
-%__mv %{buildroot}%{_bindir}/ed2k %{buildroot}%{_bindir}/ed2k-%{name}
-%__rm -rf %{buildroot}%{_datadir}/doc/%{oname}-%{version}
-%__rm -f %{buildroot}%{_libdir}/xchat/plugins/xas.pl
+mv %{buildroot}%{_bindir}/ed2k %{buildroot}%{_bindir}/ed2k-%{name}
+rm -rf %{buildroot}%{_datadir}/doc/%{oname}-%{version}
+rm -f %{buildroot}%{_libdir}/xchat/plugins/xas.pl
 
 desktop-file-install --vendor="" \
   --add-category="GTK" \
@@ -101,18 +99,9 @@ desktop-file-install --vendor="" \
   --dir %{buildroot}%{_datadir}/applications %{buildroot}%{_datadir}/applications/*
 
 # find_lang macro is different since 2012
-%if %{mdvver} <= 201100
-%find_lang %{name} %{name} %{name}gui alc cas wxcas ed2k --with-man
-%find_lang commandline alcc %{name}cmd %{name}d --with-man
-%else
 %find_lang %{name} %{name}gui alc cas wxcas ed2k %{name}.lang --with-man
 %find_lang alcc %{name}cmd %{name}d commandline.lang --with-man
-%endif
 %find_lang %{name}web --with-man
-
-
-%clean
-%__rm -rf %{buildroot}
 
 %post
 update-alternatives --install %{_bindir}/ed2k ed2k %{_bindir}/ed2k-%{name} 5
@@ -121,7 +110,6 @@ update-alternatives --install %{_bindir}/ed2k ed2k %{_bindir}/ed2k-%{name} 5
 update-alternatives --remove ed2k %{_bindir}/ed2k-%{name}
 
 %files -f %{name}.lang
-%defattr(-,root,root)
 %doc docs/*
 %{_datadir}/applications/alc.desktop
 %{_datadir}/applications/wxcas.desktop
@@ -151,7 +139,6 @@ update-alternatives --remove ed2k %{_bindir}/ed2k-%{name}
 %{_mandir}/man1/wxcas.1*
 
 %files commandline -f commandline.lang
-%defattr(-,root,root)
 %doc docs/README
 %{_bindir}/%{name}cmd
 %{_bindir}/alcc
@@ -161,9 +148,9 @@ update-alternatives --remove ed2k %{_bindir}/ed2k-%{name}
 %{_mandir}/man1/amuled.1*
 
 %files webserver -f %{name}web.lang
-%defattr(-,root,root)
 %doc docs/README
 %{_bindir}/%{name}web
 %{_datadir}/amule/webserver/*
 %{_mandir}/man1/amuleweb.1*
+
 
