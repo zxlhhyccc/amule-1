@@ -1,13 +1,13 @@
-%define		oname aMule
+%define oname aMule
 
 Name:		amule
 Version:	2.3.1
-Release:	2
+Release:	3
 Summary:	File sharing client compatible with eDonkey
 License:	GPLv2+
 Group:		Networking/File transfer
 URL:		http://amule.org
-Source:		http://ovh.dl.sourceforge.net/sourceforge/amule/%{oname}-%{version}.tar.bz2
+Source0:	http://ovh.dl.sourceforge.net/sourceforge/amule/%{oname}-%{version}.tar.bz2
 Source10:	%{name}-16.png
 Source11:	%{name}-32.png
 Source12:	%{name}-48.png
@@ -31,12 +31,12 @@ Network.  It is a fork of xMule, whis was based on emule for
 Windows. aMule currently supports (but is not limited to) the
 following platforms: Linux, *BSD and MacOS X.
 
-%package	commandline
+%package commandline
 Summary:	File sharing client compatible with eDonkey
 Group:		Networking/File transfer
-Requires:	amule
+Requires:	amule = %{version}-%{release}
 
-%description	commandline
+%description commandline
 aMule is an easy to use multi-platform client for ED2K Peer-to-Peer
 Network.  It is a fork of xMule, whis was based on emule for
 Windows. aMule currently supports (but is not limited to) the
@@ -44,12 +44,12 @@ following platforms: Linux, *BSD and MacOS X.
 
 This is the command line tool to control aMule remotely (or locally:).
 
-%package	webserver
+%package webserver
 Summary:	File sharing client compatible with eDonkey
 Group:		Networking/File transfer
-Requires:	amule
+Requires:	amule = %{version}-%{release}
 
-%description	webserver
+%description webserver
 aMule is an easy to use multi-platform client for ED2K Peer-to-Peer
 Network.  It is a fork of xMule, whis was based on emule for
 Windows. aMule currently supports (but is not limited to) the
@@ -65,7 +65,7 @@ This is the webserver to control aMule remotely (or locally:).
 %build
 ./autogen.sh
 %configure2_5x \
---with-wx-config=%{_bindir}/wx-config-unicode\
+		--with-wx-config=%{_bindir}/wx-config-unicode\
 		--enable-amulecmd \
 		--enable-amule-gui \
 		--enable-webserver\
