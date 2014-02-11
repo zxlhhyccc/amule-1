@@ -13,17 +13,17 @@ Source11:	%{name}-32.png
 Source12:	%{name}-48.png
 Patch0:		aMule-2.3.1rc2-wxversion.patch
 Patch1:		amule-2.3.1-gcc47.patch
+BuildRequires:	desktop-file-utils
+BuildRequires:	binutils-devel
 BuildRequires:	gd-devel >= 2.0
+BuildRequires:	gettext-devel
+BuildRequires:	readline-devel
+BuildRequires:	wxgtku-devel
 BuildRequires:	pkgconfig(cryptopp)
 BuildRequires:	pkgconfig(geoip)
 BuildRequires:	pkgconfig(libcurl)
 BuildRequires:	pkgconfig(libupnp)
 BuildRequires:	pkgconfig(ncurses)
-BuildRequires:	binutils-devel
-BuildRequires:	gettext-devel
-BuildRequires:	readline-devel
-BuildRequires:	wxgtku-devel
-BuildRequires:	desktop-file-utils
 
 %description
 aMule is an easy to use multi-platform client for ED2K Peer-to-Peer
@@ -117,6 +117,10 @@ This is the webserver to control aMule remotely (or locally:).
 %setup -q -n %{oname}-%{version}
 %patch0 -p1
 %patch1 -p1
+cp docs/AUTHORS .
+cp docs/Changelog ./ChangeLog
+cp docs/README .
+touch NEWS
 
 %build
 autoreconf -fi
