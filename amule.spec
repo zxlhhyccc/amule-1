@@ -3,11 +3,11 @@
 Summary:	File sharing client compatible with eDonkey
 Name:		amule
 Version:	2.3.1
-Release:	6
+Release:	7
 License:	GPLv2+
 Group:		Networking/File transfer
 Url:		http://amule.org
-Source0:	http://ovh.dl.sourceforge.net/sourceforge/amule/%{oname}-%{version}.tar.bz2
+Source0:	https://sourceforge.net/projects/amule/files/aMule/%{version}/%{oname}-%{version}.tar.bz2
 Source10:	%{name}-16.png
 Source11:	%{name}-32.png
 Source12:	%{name}-48.png
