@@ -2,8 +2,8 @@
 
 Summary:	File sharing client compatible with eDonkey
 Name:		amule
-Version:	2.3.1
-Release:	7
+Version:	2.3.2
+Release:	1
 License:	GPLv2+
 Group:		Networking/File transfer
 Url:		http://amule.org
@@ -11,8 +11,6 @@ Source0:	https://sourceforge.net/projects/amule/files/aMule/%{version}/%{oname}-
 Source10:	%{name}-16.png
 Source11:	%{name}-32.png
 Source12:	%{name}-48.png
-Patch0:		aMule-2.3.1rc2-wxversion.patch
-Patch1:		amule-2.3.1-gcc47.patch
 BuildRequires:	desktop-file-utils
 BuildRequires:	binutils-devel
 BuildRequires:	gd-devel >= 2.0
@@ -115,17 +113,16 @@ This is the webserver to control aMule remotely (or locally:).
 
 %prep
 %setup -q -n %{oname}-%{version}
-%patch0 -p1
-%patch1 -p1
+%apply_patches
+
 cp docs/AUTHORS .
 cp docs/Changelog ./ChangeLog
 cp docs/README .
 touch NEWS
 
 %build
-autoreconf -fi
 %configure2_5x \
-	--with-wx-config=%{_bindir}/wx-config-unicode\
+	--with-wx-config=%{_bindir}/wx-config-unicode \
 	--enable-amulecmd \
 	--enable-amule-gui \
 	--enable-webserver\
