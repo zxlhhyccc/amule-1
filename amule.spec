@@ -123,7 +123,7 @@ touch NEWS
 
 %build
 %configure2_5x \
-	--with-wx-config=%{_bindir}/wx-config-unicode \
+	--with-wx-config=%{_bindir}/wx-config-3.0 \
 	--enable-amulecmd \
 	--enable-amule-gui \
 	--enable-webserver\
