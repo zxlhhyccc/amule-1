@@ -3,7 +3,7 @@
 Summary:	File sharing client compatible with eDonkey
 Name:		amule
 Version:	2.3.2
-Release:	1
+Release:	2
 License:	GPLv2+
 Group:		Networking/File transfer
 Url:		http://amule.org
@@ -11,12 +11,13 @@ Source0:	https://sourceforge.net/projects/amule/files/aMule/%{version}/%{oname}-
 Source10:	%{name}-16.png
 Source11:	%{name}-32.png
 Source12:	%{name}-48.png
+Patch1:		125.patch
 BuildRequires:	desktop-file-utils
 BuildRequires:	binutils-devel
 BuildRequires:	gd-devel >= 2.0
 BuildRequires:	gettext-devel
 BuildRequires:	readline-devel
-BuildRequires:	wxgtku-devel
+BuildRequires:	wxgtku3.0-devel
 BuildRequires:	pkgconfig(cryptopp)
 BuildRequires:	pkgconfig(geoip)
 BuildRequires:	pkgconfig(libcurl)
@@ -122,7 +123,7 @@ touch NEWS
 
 %build
 %configure2_5x \
-	--with-wx-config=%{_bindir}/wx-config-unicode \
+	--with-wx-config=%{_bindir}/wx-config \
 	--enable-amulecmd \
 	--enable-amule-gui \
 	--enable-webserver\
