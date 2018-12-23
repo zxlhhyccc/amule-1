@@ -1,0 +1,50 @@
+From f9aac98874aecd9c30d06b3f74cd912557e239cb Mon Sep 17 00:00:00 2001
+From: ZenWalker <scow@riseup.net>
+Date: Mon, 26 Sep 2016 23:26:06 +0200
+Subject: [PATCH] C++11 requires a space between literal and string macro
+
+---
+ src/webserver/src/php_amule_lib.cpp | 2 +-
+ src/webserver/src/php_core_lib.cpp  | 2 +-
+ src/webserver/src/php_syntree.cpp   | 2 +-
+ 3 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/src/webserver/src/php_amule_lib.cpp b/src/webserver/src/php_amule_lib.cpp
+index d8c528619..a4a14f39d 100644
+--- a/src/webserver/src/php_amule_lib.cpp
++++ b/src/webserver/src/php_amule_lib.cpp
+@@ -564,7 +564,7 @@ void php_native_search_start_cmd(PHP_VALUE_NODE *)
+ 		case 1: search_type = EC_SEARCH_GLOBAL; break;
+ 		case 2: search_type = EC_SEARCH_KAD; break;
+ 		default:
+-			php_report_error(PHP_ERROR, "Invalid search type %"PRIu64, si->var->value.int_val);
++			php_report_error(PHP_ERROR, "Invalid search type %" PRIu64, si->var->value.int_val);
+ 			return;
+ 	}
+ 
+diff --git a/src/webserver/src/php_core_lib.cpp b/src/webserver/src/php_core_lib.cpp
+index 5db0198dd..2f720462a 100644
+--- a/src/webserver/src/php_core_lib.cpp
++++ b/src/webserver/src/php_core_lib.cpp
+@@ -71,7 +71,7 @@ void php_var_dump(PHP_VALUE_NODE *node, int ident, int ref)
+ 	if ( ref ) printf("&");
+ 	switch(node->type) {
+ 		case PHP_VAL_BOOL: printf("bool(%s)\n", node->int_val ? "true" : "false"); break;
+-		case PHP_VAL_INT: printf("int(%"PRIu64")\n", node->int_val); break;
++		case PHP_VAL_INT: printf("int(%" PRIu64 ")\n", node->int_val); break;
+ 		case PHP_VAL_FLOAT: printf("float(%f)\n", node->float_val); break;
+ 		case PHP_VAL_STRING: printf("string(%d) \"%s\"\n", (int)strlen(node->str_val), node->str_val); break;
+ 		case PHP_VAL_OBJECT: printf("Object(%s)\n", node->obj_val.class_name); break;
+diff --git a/src/webserver/src/php_syntree.cpp b/src/webserver/src/php_syntree.cpp
+index 2ccc6f546..e287ba48d 100644
+--- a/src/webserver/src/php_syntree.cpp
++++ b/src/webserver/src/php_syntree.cpp
+@@ -926,7 +926,7 @@ void cast_value_str(PHP_VALUE_NODE *val)
+ 	switch(val->type) {
+ 		case PHP_VAL_NONE: buff[0] = 0; break;
+ 		case PHP_VAL_BOOL:
+-		case PHP_VAL_INT: snprintf(buff, sizeof(buff), "%"PRIu64, val->int_val); break;
++		case PHP_VAL_INT: snprintf(buff, sizeof(buff), "%" PRIu64, val->int_val); break;
+ 		case PHP_VAL_FLOAT: snprintf(buff, sizeof(buff), "%.02f", val->float_val); break;
+ 		case PHP_VAL_STRING: return;
+ 		case PHP_VAL_ARRAY: {

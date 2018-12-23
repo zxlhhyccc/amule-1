@@ -12,6 +12,7 @@ Source10:	%{name}-16.png
 Source11:	%{name}-32.png
 Source12:	%{name}-48.png
 Patch1:		125.patch
+Patch2:		amule-2.3.2-c++11.patch
 BuildRequires:	desktop-file-utils
 BuildRequires:	binutils-devel
 BuildRequires:	gd-devel >= 2.0
