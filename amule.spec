@@ -18,7 +18,7 @@ BuildRequires:	binutils-devel
 BuildRequires:	gd-devel >= 2.0
 BuildRequires:	gettext-devel
 BuildRequires:	readline-devel
-BuildRequires:	wxgtku3.0-devel
+BuildRequires:	wxgtku2.8-devel
 BuildRequires:	pkgconfig(cryptopp)
 BuildRequires:	pkgconfig(geoip)
 BuildRequires:	pkgconfig(libcurl)
