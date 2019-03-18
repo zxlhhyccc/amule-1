@@ -123,6 +123,7 @@ cp docs/README .
 touch NEWS
 
 %build
+./autogen.sh
 %configure2_5x \
 	--with-wx-config=wx-config-2.8 \
 	--enable-amulecmd \
