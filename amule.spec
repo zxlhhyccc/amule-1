@@ -124,7 +124,7 @@ touch NEWS
 
 %build
 %configure2_5x \
-	--with-wx-config=%{_bindir}/wx-config \
+	--with-wx-config=wx-config-2.8 \
 	--enable-amulecmd \
 	--enable-amule-gui \
 	--enable-webserver\
