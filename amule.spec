@@ -115,7 +115,7 @@ This is the webserver to control aMule remotely (or locally:).
 
 %prep
 %setup -q -n %{oname}-%{version}
-%apply_patches
+%autopatch -p1
 
 cp docs/AUTHORS .
 cp docs/Changelog ./ChangeLog
