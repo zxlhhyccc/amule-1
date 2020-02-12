@@ -2,17 +2,21 @@
 
 Summary:	File sharing client compatible with eDonkey
 Name:		amule
-Version:	2.3.2
-Release:	3
+Version:	2.4.0
+Release:	1
 License:	GPLv2+
 Group:		Networking/File transfer
 Url:		http://amule.org
-Source0:	https://sourceforge.net/projects/amule/files/aMule/%{version}/%{oname}-%{version}.tar.bz2
+#Source0:	https://sourceforge.net/projects/amule/files/aMule/%{version}/%{oname}-%{version}.tar.bz2
+# Use latest git, last release was done years ago and is broken and terrible to compile.
+Source0:	amule-master-31.01.2020.zip
 Source10:	%{name}-16.png
 Source11:	%{name}-32.png
 Source12:	%{name}-48.png
-Patch1:		125.patch
-Patch2:		amule-2.3.2-c++11.patch
+#Patch1:		125.patch
+#Patch2:		amule-2.3.2-c++11.patch
+BuildRequires:	bison
+BuildRequires:	flex
 BuildRequires:	desktop-file-utils
 BuildRequires:	binutils-devel
 BuildRequires:	gd-devel >= 2.0
@@ -114,16 +118,18 @@ This is the webserver to control aMule remotely (or locally:).
 #----------------------------------------------------------------------------
 
 %prep
-%setup -q -n %{oname}-%{version}
+%setup -q -n %{name}-master
 %autopatch -p1
 
-cp docs/AUTHORS .
-cp docs/Changelog ./ChangeLog
-cp docs/README .
-touch NEWS
+# fix SVN version tag name
+sed -i -e 's|,\[SVN]|,\[2.4.0 (SVN %{date})]|' configure.ac
+
+# make autoreconf happy
+sed -i -e 's,\(^AM_INIT_AUTOMAKE\)\((\[\(.*\)\])\|(\(.*\))\|.*\),\1([\3\4 subdir-objects]),' configure.ac
 
 %build
-%configure2_5x \
+NOCONFIGURE=1 ./autogen.sh
+%configure \
 	--with-wx-config=%{_bindir}/wx-config \
 	--enable-amulecmd \
 	--enable-amule-gui \
