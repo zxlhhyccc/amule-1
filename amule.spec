@@ -118,7 +118,7 @@ This is the webserver to control aMule remotely (or locally:).
 #----------------------------------------------------------------------------
 
 %prep
-%setup -q -n %{name}-master
+%setup -q -n %{name}
 %autopatch -p1
 
 # fix SVN version tag name
