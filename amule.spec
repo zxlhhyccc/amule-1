@@ -21,10 +21,12 @@ BuildRequires:	bison
 BuildRequires:  cmake
 BuildRequires:	flex
 BuildRequires:	desktop-file-utils
+BuildRequires:	boost-devel
 BuildRequires:	binutils-devel
 BuildRequires:	gd-devel >= 2.0
 BuildRequires:	gettext-devel
 BuildRequires:	readline-devel
+# At some point we can switch to new wxgtk 3.1.X/3.2
 BuildRequires:	wxgtku3.0-devel
 BuildRequires:	pkgconfig(cryptopp)
 BuildRequires:	pkgconfig(geoip)
