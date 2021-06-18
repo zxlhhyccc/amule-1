@@ -3,12 +3,13 @@
 Summary:	File sharing client compatible with eDonkey
 Name:		amule
 Version:	2.4.0
-Release:	2
+Release:	2.git.20210426
 License:	GPLv2+
 Group:		Networking/File transfer
 Url:		http://amule.org
 #Source0:	https://sourceforge.net/projects/amule/files/aMule/%{version}/%{oname}-%{version}.tar.gz
 # Use latest git, last release was done years ago and is broken and terrible to compile.
+# Git from 26.04.2021, commit: 6d4c03b005907dff56b778c2763d3cb576e3d90a
 Source0:	amule-2.4.0.tar.gz
 Source10:	%{name}-16.png
 Source11:	%{name}-32.png
@@ -49,6 +50,8 @@ following platforms: Linux, *BSD and MacOS X.
 %{_bindir}/cas
 %{_bindir}/ed2k-amule
 %{_bindir}/alc
+%{_bindir}/autostart-xas
+%{_bindir}/fileview
 %dir %{_datadir}/%{name}
 %{_datadir}/%{name}/skins
 %{_datadir}/applications/amule.desktop
@@ -65,6 +68,9 @@ following platforms: Linux, *BSD and MacOS X.
 %{_mandir}/man1/cas.1*
 %{_mandir}/man1/ed2k.1*
 %{_mandir}/man1/wxcas.1*
+%{_mandir}/*/man1/amuled.1.*
+%{_mandir}/*/man1/xas.1.*
+%{_mandir}/man1/xas.1.*
 
 %post
 update-alternatives --install %{_bindir}/ed2k ed2k %{_bindir}/ed2k-%{name} 5
