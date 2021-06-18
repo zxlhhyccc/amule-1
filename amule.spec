@@ -130,19 +130,18 @@ sed -i 's|unset (\${CMAKE_REQUIRED_LIBRARIES})|#unset (\${CMAKE_REQUIRED_LIBRARI
 
 %build
 %cmake \
-#	--with-wx-config=%{_bindir}/wx-config \
-#	--enable-amulecmd \
-#	--enable-amule-gui \
-#	--enable-webserver\
-#	--disable-xas\
-#	--enable-cas\
-#	--enable-wxcas\
-#	--enable-alc\
-#	--enable-alcc \
-#	--disable-debug\
-#	--enable-amule-daemon \
-#	--enable-optimize \
-#	--enable-geoip
+        	-DENABLE_BOOST=ON      \
+	        -DBUILD_AMULECMD=ON    \
+	        -DBUILD_REMOTEGUI=ON   \
+	        -DBUILD_WEBSERVER=ON   \
+	        -DBUILD_CAS=ON         \
+	        -DBUILD_WXCAS=ON       \
+	        -DBUILD_ALC=ON         \
+	        -DBUILD_ALCC=ON        \
+	        -DBUILD_DAEMON=ON      \
+	        -DENABLE_IP2COUNTRY=ON \
+	        -DBUILD_FILEVIEW=ON    \
+	        -DBUILD_XAS=ON         \
 %make_build
 
 %install
@@ -165,6 +164,5 @@ desktop-file-install --vendor="" \
 
 # find_lang macro is different since 2012
 %find_lang %{name} %{name}gui alc cas wxcas ed2k %{name}.lang --with-man
-%find_lang alcc %{name}cmd %{name}d commandline.lang --with-man
+%find_lang alcc %{name}cmd commandline.lang --with-man
 %find_lang %{name}web --with-man
-
