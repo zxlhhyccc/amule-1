@@ -21,7 +21,7 @@ BuildRequires:	bison
 BuildRequires:  cmake
 BuildRequires:	flex
 BuildRequires:	desktop-file-utils
-BuildRequires:	boost-devel
+#BuildRequires:	boost-devel
 BuildRequires:	binutils-devel
 BuildRequires:	gd-devel >= 2.0
 BuildRequires:	gettext-devel
