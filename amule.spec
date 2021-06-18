@@ -15,7 +15,9 @@ Source11:	%{name}-32.png
 Source12:	%{name}-48.png
 #Patch1:		125.patch
 #Patch2:		amule-2.3.2-c++11.patch
+
 BuildRequires:	bison
+BuildRequires:  cmake
 BuildRequires:	flex
 BuildRequires:	desktop-file-utils
 BuildRequires:	binutils-devel
@@ -122,31 +124,29 @@ This is the webserver to control aMule remotely (or locally:).
 %autopatch -p1
 
 # fix SVN version tag name
-sed -i -e 's|,\[SVN]|,\[2.4.0 (SVN %{date})]|' configure.ac
+sed -i -e 's|VERSION "GIT"|VERSION "%{version} GIT"|' CMakeLists.txt
 
-# make autoreconf happy
-sed -i -e 's,\(^AM_INIT_AUTOMAKE\)\((\[\(.*\)\])\|(\(.*\))\|.*\),\1([\3\4 subdir-objects]),' configure.ac
+sed -i 's|unset (\${CMAKE_REQUIRED_LIBRARIES})|#unset (\${CMAKE_REQUIRED_LIBRARIES})|' cmake/bfd.cmake
 
 %build
-NOCONFIGURE=1 ./autogen.sh
-%configure \
-	--with-wx-config=%{_bindir}/wx-config \
-	--enable-amulecmd \
-	--enable-amule-gui \
-	--enable-webserver\
-	--disable-xas\
-	--enable-cas\
-	--enable-wxcas\
-	--enable-alc\
-	--enable-alcc \
-	--disable-debug\
-	--enable-amule-daemon \
-	--enable-optimize \
-	--enable-geoip
-%make
+%cmake \
+#	--with-wx-config=%{_bindir}/wx-config \
+#	--enable-amulecmd \
+#	--enable-amule-gui \
+#	--enable-webserver\
+#	--disable-xas\
+#	--enable-cas\
+#	--enable-wxcas\
+#	--enable-alc\
+#	--enable-alcc \
+#	--disable-debug\
+#	--enable-amule-daemon \
+#	--enable-optimize \
+#	--enable-geoip
+%make_build
 
 %install
-%makeinstall_std
+%make_install -C build
 install -m 644 -D %{SOURCE10} %{buildroot}%{_miconsdir}/%{name}.png
 install -m 644 -D %{SOURCE11} %{buildroot}%{_iconsdir}/%{name}.png
 install -m 644 -D %{SOURCE12} %{buildroot}%{_liconsdir}/%{name}.png
