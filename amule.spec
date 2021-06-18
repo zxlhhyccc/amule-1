@@ -141,7 +141,7 @@ sed -i 's|unset (\${CMAKE_REQUIRED_LIBRARIES})|#unset (\${CMAKE_REQUIRED_LIBRARI
 	        -DBUILD_DAEMON=ON      \
 	        -DENABLE_IP2COUNTRY=ON \
 	        -DBUILD_FILEVIEW=ON    \
-	        -DBUILD_XAS=ON         \
+	        -DBUILD_XAS=ON         
 %make_build
 
 %install
