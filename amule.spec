@@ -1,16 +1,17 @@
 %define oname aMule
+%global optflags %{optflags} -Wno-register
 
 Summary:	File sharing client compatible with eDonkey
 Name:		amule
 Version:	2.4.0
-Release:	8.git.20210426
+Release:	8.git.20231116
 License:	GPLv2+
 Group:		Networking/File transfer
 Url:		http://amule.org
 #Source0:	https://sourceforge.net/projects/amule/files/aMule/%{version}/%{oname}-%{version}.tar.gz
 # Use latest git, last release was done years ago and is broken and terrible to compile.
-# Git from 26.04.2021, commit: 6d4c03b005907dff56b778c2763d3cb576e3d90a
-Source0:	amule-2.4.0.tar.gz
+# Git from 2023-11-16, commit: e26d06a6eeaf37c716a88a47890cb85b931a0538
+Source0:	https://github.com/amule-project/amule/archive/refs/heads/master.tar.gz
 Source10:	%{name}-16.png
 Source11:	%{name}-32.png
 Source12:	%{name}-48.png
@@ -128,13 +129,14 @@ This is the webserver to control aMule remotely (or locally:).
 #----------------------------------------------------------------------------
 
 %prep
-%setup -q -n %{name}
-%autopatch -p1
+%autosetup -p1 -n %{name}-master
 
 # fix SVN version tag name
 sed -i -e 's|VERSION "GIT"|VERSION "%{version} GIT"|' CMakeLists.txt
 
 sed -i 's|unset (\${CMAKE_REQUIRED_LIBRARIES})|#unset (\${CMAKE_REQUIRED_LIBRARIES})|' cmake/bfd.cmake
+
+#find . -name "*.cpp" -o -name "*.c" |xargs sed -i -e 's,register ,,g'
 
 %build
 %cmake \
