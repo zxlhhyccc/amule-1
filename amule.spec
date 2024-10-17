@@ -7,7 +7,7 @@ Version:	2.4.0
 Release:	8.git.20231116
 License:	GPLv2+
 Group:		Networking/File transfer
-Url:		http://amule.org
+Url:		https://amule.org
 #Source0:	https://sourceforge.net/projects/amule/files/aMule/%{version}/%{oname}-%{version}.tar.gz
 # Use latest git, last release was done years ago and is broken and terrible to compile.
 # Git from 2023-11-16, commit: e26d06a6eeaf37c716a88a47890cb85b931a0538
