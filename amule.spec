@@ -4,14 +4,14 @@
 Summary:	File sharing client compatible with eDonkey
 Name:		amule
 Version:	2.4.0
-Release:	8.git.20231116
+Release:	git.20250117.1
 License:	GPLv2+
 Group:		Networking/File transfer
 Url:		https://amule.org
 #Source0:	https://sourceforge.net/projects/amule/files/aMule/%{version}/%{oname}-%{version}.tar.gz
 # Use latest git, last release was done years ago and is broken and terrible to compile.
 # Git from 2023-11-16, commit: e26d06a6eeaf37c716a88a47890cb85b931a0538
-Source0:	https://github.com/amule-project/amule/archive/refs/heads/master.tar.gz
+Source0:	https://github.com/amule-project/amule/archive/refs/heads/amule-master.tar.gz
 Source10:	%{name}-16.png
 Source11:	%{name}-32.png
 Source12:	%{name}-48.png
@@ -28,7 +28,7 @@ BuildRequires:	gd-devel >= 2.0
 BuildRequires:	gettext-devel
 BuildRequires:	readline-devel
 # At some point we can switch to new wxgtk 3.1.X/3.2
-BuildRequires:	wxgtku3.0-devel
+BuildRequires:	wxgtk-devel
 BuildRequires:	pkgconfig(cryptopp)
 BuildRequires:	pkgconfig(geoip)
 BuildRequires:	pkgconfig(libcurl)
